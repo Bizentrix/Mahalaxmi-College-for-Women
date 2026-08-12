@@ -84,6 +84,20 @@ const TICKER_ITEMS = [
   "Pudhumai Penn & Post-Matric scholarship renewal — apply before month-end",
 ];
 
+<<<<<<< HEAD
+/* Each entry maps to its own dedicated page (see requirement: no #section
+   scrolling for primary navigation). `page` matches <body data-page="…">
+   on every HTML file, used by nav() below to highlight the active item. */
+const NAV = [
+  { label:"Home", href:"index.html", page:"home" },
+  { label:"About", href:"about.html", page:"about" },
+  { label:"Academics", href:"academics.html", page:"academics" },
+  { label:"Admissions", href:"admissions.html", page:"admissions" },
+  { label:"Campus Life", href:"campus-life.html", page:"campus-life" },
+  { label:"Events", href:"events.html", page:"events" },
+  { label:"Announcements", href:"announcements.html", page:"announcements" },
+  { label:"Contact", href:"contact.html", page:"contact" },
+=======
 const NAV = [
   { label:"Home", href:"#home" },
   { label:"About Us", children:[
@@ -128,6 +142,7 @@ const NAV = [
     ]},
   { label:"Admissions", href:"#admissions" },
   { label:"Contact", href:"#contact" },
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
 ];
 
 const FINDER_INTERESTS = [
@@ -186,6 +201,19 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
    3. NAV
    ============================================================ */
 (function nav() {
+<<<<<<< HEAD
+  const currentPage = document.body.dataset.page || "home";
+
+  const ul = $("#navMenu");
+  ul.innerHTML = NAV.map(n =>
+    `<li><a href="${n.href}" data-spy="${n.page}"${n.page === currentPage ? ' class="active" aria-current="page"' : ""}>${n.label}</a></li>`
+  ).join("");
+
+  const d = $("#drawerNav");
+  d.innerHTML = NAV.map(n =>
+    `<li><a href="${n.href}"${n.page === currentPage ? ' class="active" aria-current="page"' : ""}>${n.label}${icon("i-arrow")}</a></li>`
+  ).join("");
+=======
   const ul = $("#navMenu");
   ul.innerHTML = NAV.map(n => n.children
     ? `<li class="drop">
@@ -210,13 +238,18 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
     $$("#drawerNav li").forEach(x => x.classList.remove("open"));
     if (!was) li.classList.add("open");
   }));
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
 
   const drawer = $("#drawer"), ov = $("#ov");
   const close = () => { drawer.classList.remove("open"); ov.classList.remove("on"); document.body.style.overflow = ""; };
   $("#burger").addEventListener("click", () => { drawer.classList.add("open"); ov.classList.add("on"); document.body.style.overflow = "hidden"; });
   $("#drawerClose").addEventListener("click", close);
   ov.addEventListener("click", close);
+<<<<<<< HEAD
+  d.addEventListener("click", e => { if (e.target.closest("a")) close(); });
+=======
   d.addEventListener("click", e => { if (e.target.closest("a") && !e.target.closest(".d-parent")) close(); });
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
   drawer.addEventListener("click", e => { if (e.target.closest(".cta a, .cta button[data-apply]")) close(); });
 
   const header = $(".site-header");
@@ -230,12 +263,25 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
     $(".progress").style.width = (y / (document.body.scrollHeight - innerHeight) * 100) + "%";
   }, { passive: true });
 
+<<<<<<< HEAD
+  // In-page scrollspy still applies to same-page anchor sections (e.g. Home's
+  // own sections), but it never overrides the page-level active nav item.
+  const secs = $$("main section[id]");
+  if (secs.length) {
+    const links = $$("#navMenu a[data-spy]");
+    const spy = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) links.forEach(a => a.classList.toggle("active", a.dataset.spy === currentPage));
+    }), { rootMargin: "-40% 0px -55% 0px" });
+    secs.forEach(s => spy.observe(s));
+  }
+=======
   const secs = $$("section[id]");
   const links = $$("#navMenu a[data-spy]");
   const spy = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) links.forEach(a => a.classList.toggle("active", a.dataset.spy === "#" + e.target.id));
   }), { rootMargin: "-40% 0px -55% 0px" });
   secs.forEach(s => spy.observe(s));
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
 
   $("#toTop").addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
 })();
@@ -269,8 +315,15 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
    5. TICKER
    ============================================================ */
 (function ticker() {
+<<<<<<< HEAD
+  const track = $("#tickerTrack");
+  if (!track) return;
+  const seq = TICKER_ITEMS.map(t => `<a href="announcements.html"><i class="dot"></i>${t}</a>`).join("");
+  track.innerHTML = seq + seq;
+=======
   const seq = TICKER_ITEMS.map(t => `<a href="#announcements"><i class="dot"></i>${t}</a>`).join("");
   $("#tickerTrack").innerHTML = seq + seq;
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
 })();
 
 /* ============================================================
@@ -311,6 +364,10 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
    ============================================================ */
 (function programmes() {
   const grid = $("#progGrid");
+<<<<<<< HEAD
+  if (!grid) return;
+=======
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
   const card = d => `
     <article class="prog-card" data-reveal>
       <div class="pc-top">
@@ -326,7 +383,11 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
       </div>
       <div class="pc-foot">
         <span>Estd. ${d.estd} · Aided &amp; Self-Financed</span>
+<<<<<<< HEAD
+        <a href="contact.html">Enquire ${icon("i-arrow")}</a>
+=======
         <a href="#contact">Enquire ${icon("i-arrow")}</a>
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
       </div>
     </article>`;
   const render = f => {
@@ -461,6 +522,10 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
    ============================================================ */
 (function events() {
   const track = $("#evtTrack"), dots = $("#evtDots");
+<<<<<<< HEAD
+  if (!track) return;
+=======
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
   track.innerHTML = EVENTS.map(e => `
     <article class="evt-card">
       <div class="evt-head">
@@ -470,7 +535,11 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
       <p>${e.desc}</p>
       <div class="evt-foot">
         <span>${icon("i-pin")} ${e.venue}</span>
+<<<<<<< HEAD
+        <a href="contact.html">Details ${icon("i-arrow")}</a>
+=======
         <a href="#contact">Details ${icon("i-arrow")}</a>
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
       </div>
     </article>`).join("");
   let page = 0, per = innerWidth <= 640 ? 1 : innerWidth <= 980 ? 2 : 3, timer;
@@ -498,7 +567,13 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
    11. ANNOUNCEMENTS CENTER (search + filter + detail modal)
    ============================================================ */
 (function announcements() {
+<<<<<<< HEAD
+  const grid = $("#annGrid");
+  if (!grid) return;
+  const cats = [...new Set(ANNOUNCEMENTS.map(a => a.cat))];
+=======
   const grid = $("#annGrid"), cats = [...new Set(ANNOUNCEMENTS.map(a => a.cat))];
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
   let q = "", cat = "All", shown = 4;
   $("#annChips").innerHTML = ["All", ...cats].map(c =>
     `<button class="chip-cat${c === "All" ? " on" : ""}" data-c="${c}">${c}</button>`).join("");
@@ -553,6 +628,10 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
    ============================================================ */
 (function testimonials() {
   const track = $("#tTrack"), dots = $("#tDots");
+<<<<<<< HEAD
+  if (!track) return;
+=======
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
   track.innerHTML = TESTIMONIALS.map(t => `
     <div class="t-slide">
       <div class="t-stars">${icon("i-star-fill").repeat(5)}</div>
@@ -579,6 +658,10 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
    ============================================================ */
 (function faq() {
   const list = $("#faqList");
+<<<<<<< HEAD
+  if (!list) return;
+=======
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
   list.innerHTML = FAQS.map(f => `
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">${f.q}<span class="fx">${icon("i-plus")}</span></button>
@@ -802,7 +885,13 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
     }, 2600);
   }
   if (!matchMedia("(hover:hover)").matches) return;
+<<<<<<< HEAD
+  const hero = $(".hero");
+  if (!hero) return;
+  const layers = $$("[data-depth]", hero);
+=======
   const hero = $(".hero"), layers = $$("[data-depth]", hero);
+>>>>>>> 83175518c0a3791b0195e63b4afc28076d3fd01e
   if (!layers.length) return;
   hero.addEventListener("mousemove", e => {
     const r = hero.getBoundingClientRect();
