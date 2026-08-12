@@ -674,15 +674,30 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
   let greeted = false;
 
   fab.addEventListener("click", () => {
-    const open = panel.classList.toggle("on");
-    fab.classList.toggle("off", open);
-    if (open && !greeted) {
+    panel.classList.toggle("on");
+    fab.classList.toggle("off");
+    if (panel.classList.contains("on") && !greeted) {
       greeted = true;
       say("Hello! 🙏 I'm <b>APCM Assist</b>, your campus helpdesk. Ask me about admissions, programmes, scholarships, day order, events or how to reach us — or tap a quick topic below.");
     }
-    if (open) setTimeout(() => input.focus(), 350);
+    if (panel.classList.contains("on")) setTimeout(() => input.focus(), 350);
   });
+  
+  // Close button minimizes (only hides panel, keeps button visible for reopening)
   $("#botClose").addEventListener("click", () => { panel.classList.remove("on"); fab.classList.remove("off"); });
+  
+  // Auto-open chat on page load
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      panel.classList.add("on");
+      fab.classList.add("off");
+      if (!greeted) {
+        greeted = true;
+        say("Hello! 🙏 I'm <b>APCM Assist</b>, your campus helpdesk. Ask me about admissions, programmes, scholarships, day order, events or how to reach us — or tap a quick topic below.");
+      }
+      setTimeout(() => input.focus(), 350);
+    }, 500);
+  });
 
   const RULES = [
     { k:["naac","nirf","rank","grade","accredit"], a:"Great question to ask! 🏆 We're <b>reaccredited by NAAC with 'A+' Grade (CGPA 3.42/4.00)</b> and <b>ranked 88th in NIRF India Rankings 2025</b> — among the top colleges of Tamil Nadu. Also UGC-recognised under 2(f) & 12(B)." },

@@ -97,29 +97,7 @@
 
 <!-- ============ HEADER ============ -->
 <header class="site-header">
-  <div class="topbar">
-    <div class="container">
-      <div class="tb-left">
-        <a href="tel:+914612345655"><svg class="icon"><use href="#i-phone"/></svg>0461-2345655</a>
-        <a href="mailto:principal@apcmcollege.ac.in"><svg class="icon"><use href="#i-mail"/></svg>principal@apcmcollege.ac.in</a>
-      </div>
-      <nav class="tb-links" aria-label="Quick links">
-        <a href="https://www.apcmcollege.ac.in/naac/index.html" target="_blank" rel="noopener">NAAC</a>
-        <a href="https://www.apcmcollege.ac.in/nirf" target="_blank" rel="noopener">NIRF</a>
-        <a href="https://www.apcmcollege.ac.in/naac/index.html" target="_blank" rel="noopener">IQAC</a>
-        <a href="https://www.apcmcollege.ac.in/academic-calendar" target="_blank" rel="noopener">Calendar</a>
-        <a href="https://www.apcmcollege.ac.in/grievance" target="_blank" rel="noopener">Grievance</a>
-        <a href="https://www.apcmcollege.ac.in/#" target="_blank" rel="noopener">Feedback</a>
-      </nav>
-      <div class="tb-portals">
-        <a href="https://portal.apcmcollege.ac.in/" target="_blank" rel="noopener"><svg class="icon"><use href="#i-globe"/></svg><span>ERP</span></a>
-        <a href="https://portal.apcmcollege.ac.in/mob/#/stu/login" target="_blank" rel="noopener"><svg class="icon"><use href="#i-grad"/></svg><span>Student</span></a>
-        <a href="https://portal.apcmcollege.ac.in/mob/#/staff/login" target="_blank" rel="noopener"><svg class="icon"><use href="#i-users"/></svg><span>Staff</span></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="navbar">
+<div class="navbar">
     <div class="container">
       <a href="#home" class="brand" aria-label="APCM College home">
         <img src="apcm-redesign/assets/apcm-logo.png" alt="APCM College crest" class="brand-logo">
@@ -157,7 +135,6 @@
 <section class="hero" id="home">
   <div class="container">
     <div class="hero-center">
-      <div class="dayorder hero-pill" id="dayOrder" data-reveal></div>
       <span class="hero-kick" data-reveal><svg class="icon"><use href="#i-award"/></svg> Affiliated to Manonmaniam Sundaranar University · Estd. 1974</span>
       <h1 class="hero-h1" data-reveal>Where Daughters Become
         <span class="rot"><span class="rot-track" id="rotTrack">
@@ -304,25 +281,25 @@
     </div>
     <div class="tree-grid">
       <article class="tree-card" data-reveal>
-        <div class="medallion">A.V</div>
+        <img src="apcm-redesign/assets/founder-1-300x270.jpg" alt="Kulapathi Sri A.P.C. Veerabahu" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:1rem;">
         <h3>Kulapathi Sri <br>A.P.C. Veerabahu</h3>
         <span class="lk-role">Founder</span>
         <p>The visionary who lit the lamp — planting women's higher education in the soil of Thoothukudi.</p>
       </article>
       <article class="tree-card" data-reveal>
-        <div class="medallion">A.C</div>
+        <img src="apcm-redesign/assets/President-1-300x270.jpg" alt="Thiru A.P.C.V. Chockalingam" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:1rem;">
         <h3>Thiru <br>A.P.C.V. Chockalingam</h3>
         <span class="lk-role">President</span>
         <p>Carrying forward the founder's mission with stewardship, expansion and unwavering commitment.</p>
       </article>
       <article class="tree-card" data-reveal>
-        <div class="medallion">C.S</div>
+        <img src="apcm-redesign/assets/Secretary-1-300x270.jpg" alt="Tmt. C. Subbulakshmi" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:1rem;">
         <h3>Tmt. <br>C. Subbulakshmi</h3>
         <span class="lk-role">Secretary</span>
         <p>The administrative anchor — ensuring every student finds support, safety and opportunity on campus.</p>
       </article>
       <article class="tree-card" data-reveal>
-        <div class="medallion">K.P</div>
+        <img src="apcm-redesign/assets/principal-compressed.png" alt="Dr. K. Palani" style="width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:1rem;">
         <h3>Dr. <br>K. Palani</h3>
         <span class="lk-role">Principal</span>
         <p>Leading the academic family — championing quality, research culture and student-first governance.</p>
@@ -792,12 +769,12 @@
         <p><svg class="icon"><use href="#i-pin"/></svg>Ettayapuram Road, Thoothukudi – 628 002</p>
         <p><svg class="icon"><use href="#i-phone"/></svg>0461-2345655</p>
         <p><svg class="icon"><use href="#i-mail"/></svg>principal@apcmcollege.ac.in</p>
-        <form id="newsForm" novalidate style="display:flex;gap:.5rem;margin-top:1rem">
-          <div class="f-group" style="flex:1;margin:0">
-            <input type="email" name="newsletter" placeholder="Your email for updates" required style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);color:#ffffff">
-            <span class="f-hint">Valid email needed.</span>
+        <form id="newsForm" novalidate style="display:flex;gap:0.3rem;margin-top:0.8rem;">
+          <div class="f-group" style="flex:1;margin:0;">
+            <input type="email" name="newsletter" placeholder="Your email" required style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);color:#ffffff;font-size:0.85rem;padding:0.4rem 0.6rem;">
+            <span class="f-hint" style="font-size:0.7rem;">Valid email needed.</span>
           </div>
-          <button class="btn btn-gold btn-sm" type="submit" aria-label="Subscribe"><svg class="icon"><use href="#i-arrow"/></svg></button>
+          <button class="btn btn-gold btn-sm" type="submit" aria-label="Subscribe" style="padding:0.4rem 0.8rem;"><svg class="icon"><use href="#i-arrow"/></svg></button>
         </form>
       </div>
     </div>

@@ -984,7 +984,7 @@ footer::before{
 
 /* ---------- 24. APCM ASSIST CHATBOT ---------- */
 #botFab{
-  position:fixed;left:22px;bottom:22px;width:58px;height:58px;border-radius:20px;z-index:850;
+  position:fixed;right:22px;bottom:22px;width:58px;height:58px;border-radius:20px;z-index:850;
   background:linear-gradient(140deg,var(--maroon),var(--maroon-2));color:var(--gold-2);
   display:grid;place-items:center;box-shadow:var(--shadow-l);transition:.35s var(--ease);
 }
@@ -995,7 +995,7 @@ footer::before{
 }
 @keyframes ping{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
 #botPanel{
-  position:fixed;left:22px;bottom:94px;z-index:860;width:min(380px,calc(100vw - 44px));
+  position:fixed;right:22px;bottom:94px;z-index:860;width:min(380px,calc(100vw - 44px));
   height:min(520px,70vh);display:flex;flex-direction:column;
   background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);box-shadow:var(--shadow-l);
   opacity:0;visibility:hidden;transform:translateY(24px) scale(.96);transform-origin:bottom left;
@@ -1049,7 +1049,7 @@ footer::before{
   background:linear-gradient(140deg,var(--maroon),var(--maroon-2));color:var(--gold-2);transition:.25s;
 }
 #botForm button:hover{transform:scale(1.08) rotate(8deg)}
-@media(max-width:640px){#botFab{left:14px;bottom:14px}#botPanel{left:14px;bottom:82px;width:calc(100vw - 28px)}}
+@media(max-width:640px){#botFab{right:14px;bottom:14px}#botPanel{right:14px;bottom:82px;width:calc(100vw - 28px)}}
 
 /* reduced motion */
 @media (prefers-reduced-motion:reduce){
