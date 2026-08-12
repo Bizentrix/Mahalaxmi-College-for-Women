@@ -1,0 +1,40 @@
+{
+  "official_site": "https://www.apcmcollege.ac.in/",
+  "official_brochure": "https://apcmcollege.ac.in/wp-content/uploads/2025/04/APCMC-Brochure.pdf",
+  "official_infrastructure_report": "https://apcmcollege.ac.in/wp-content/uploads/2024/09/APCM-SSR.pdf",
+  "official_youtube_channel": "https://www.youtube.com/@a.p.c.mahalaxmicollegeforw2276",
+  "official_videos": [
+    {
+      "title": "Infrastructure of A.P.C. Mahalaxmi College for Women, Thoothukudi",
+      "url": "https://www.youtube.com/watch?v=d7OoVrkm3XY",
+      "placement": "Campus / homepage secondary video"
+    },
+    {
+      "title": "Student Support Services Offered at A.P.C. Mahalaxmi College for Women, Thoothukudi",
+      "url": "https://www.youtube.com/watch?v=3FKJgjQzwdw",
+      "placement": "Admissions / Student Support"
+    }
+  ],
+  "downloaded_images": [
+    {
+      "file": "01_brand/apcm-logo-public-source.jpeg",
+      "source": "https://dial4college.blr1.cdn.digitaloceanspaces.com/pro/1032/logo/1699098422.jpeg",
+      "note": "Publicly located logo. Replace with college-provided original logo for production."
+    },
+    {
+      "file": "03_campus/apcm-main-block.jpg",
+      "source": "https://images.careerindia.com/college-photos/2688/a-p-mahalaxmi-block_1471336291.jpg",
+      "note": "Publicly located campus image. Confirm reuse rights before production."
+    },
+    {
+      "file": "03_campus/apcm-campus-courtyard.jpg",
+      "source": "https://www.collegebatch.com/static/clg-gallery/a-p-c-mahalaxmi-college-for-women-thoothukudi-301745.jpg",
+      "note": "Publicly located campus image. Confirm reuse rights before production."
+    }
+  ],
+  "important": [
+    "Do not download/re-host official YouTube MP4s unless the college/client has permission and the original files.",
+    "Use YouTube embeds for official videos when no licensed MP4 is supplied.",
+    "The generated homepage hero preview is made from publicly located campus photographs and is NOT official video footage."
+  ]
+}
