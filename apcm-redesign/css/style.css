@@ -574,21 +574,6 @@ section{padding:5.5rem 0;position:relative}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
 @media(max-width:980px){.why-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.why-grid{grid-template-columns:1fr}}
-.why-card{
-  padding:1.9rem;border-radius:var(--r-l);background:var(--card);border:1px solid var(--line);
-  transition:.4s var(--ease);position:relative;overflow:hidden;
-}
-.why-card::after{
-  content:"";position:absolute;right:-30px;bottom:-30px;width:120px;height:120px;border-radius:50%;
-  background:radial-gradient(circle,var(--gold-soft),transparent 70%);transition:.5s;
-}
-.why-card:hover{transform:translateY(-7px);box-shadow:0 0 18px rgba(195,154,46,.4), var(--shadow-m)}
-.why-card:hover::after{transform:scale(1.7)}
-.why-num{font-family:var(--font-d);font-size:.85rem;color:var(--gold);letter-spacing:.2em;margin-bottom:1rem;display:block}
-.why-card h3{font-family:var(--font-d);font-size:1.22rem;margin-bottom:.5rem;font-weight:600;display:flex;gap:.6rem;align-items:center}
-.why-card h3 .icon{color:var(--maroon-2);width:1.15em;height:1.15em}
-[data-theme="dark"] .why-card h3 .icon{color:var(--gold-2)}
-.why-card p{font-size:.9rem;color:var(--muted)}
 
 /* facility band */
 .facility{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:3.6rem}
