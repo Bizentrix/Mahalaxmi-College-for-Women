@@ -89,8 +89,6 @@ const NAV = [
   { label:"About", href:"about.html", page:"about" },
   { label:"Academics", href:"academics.html", page:"academics" },
   { label:"Admissions", href:"admissions.html", page:"admissions" },
-  { label:"Campus Life", href:"campus-life.html", page:"campus-life" },
-  { label:"Events", href:"events.html", page:"events" },
   { label:"Announcements", href:"announcements.html", page:"announcements" },
   { label:"Contact", href:"contact.html", page:"contact" },
 ];
@@ -245,14 +243,30 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
       if (p < 1) requestAnimationFrame(tick); else if (suffix) el.insertAdjacentHTML("beforeend", `<small>${suffix}</small>`);
     })(t0);
   };
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (!e.isIntersecting) return;
-    e.target.classList.add("in");
-    $$("[data-count]", e.target).forEach(count);
-    if (e.target.dataset.count) count(e.target);
-    io.unobserve(e.target);
-  }), { threshold: .18 });
-  $$("[data-reveal],[data-count]").forEach(el => io.observe(el));
+  
+  // Add a small delay to ensure DOM is ready before starting animations
+  requestAnimationFrame(() => {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add("in");
+      $$("[data-count]", e.target).forEach(count);
+      if (e.target.dataset.count) count(e.target);
+      io.unobserve(e.target);
+    }), { threshold: .18 });
+    $$("[data-reveal],[data-count]").forEach(el => {
+      // Check if element is already visible on initial load
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        // Trigger immediately for elements already visible
+        el.classList.add("in");
+        $$("[data-count]", el).forEach(count);
+        if (el.dataset.count) count(el);
+      } else {
+        // Observe elements not yet visible
+        io.observe(el);
+      }
+    });
+  });
 
   $$(".prog-grid,.tree-grid,.why-grid,.steps,.timeline,.sup-grid").forEach(g => {
     $$(":scope>*", g).forEach((c, i) => {
