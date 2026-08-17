@@ -134,20 +134,27 @@
 
 
 <main>
-<!-- ============ PAGE HERO ============ -->
-<section class="page-hero">
+<!-- ============ EVENTS HERO ============ -->
+<section class="events-hero">
   <div class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><span aria-current="page">Events</span></nav>
-    <span class="kicker">News &amp; Events</span>
-    <h1>Campus Calendar</h1>
-    <p class="page-hero-sub">Seminars, fests, sports and celebrations &mdash; the APCM quad is never quiet.</p>
-    
+    <div class="events-hero-content">
+      <span class="kicker-light">News &amp; Events</span>
+      <h1>Campus Calendar</h1>
+      <p class="events-hero-sub">Seminars, fests, sports and celebrations — the APCM quad is never quiet.</p>
+    </div>
   </div>
 </section>
 
-<!-- ============ EVENTS ============ -->
-<section id="events" class="alt">
+<!-- ============ EVENTS CAROUSEL ============ -->
+<section id="events-carousel">
   <div class="container">
+    <div class="section-head sh-c" data-reveal>
+      <span class="kicker">Upcoming Events</span>
+      <h2>What's Happening at APCM</h2>
+      <p class="sub">Celebrate excellence, creativity, and community with us.</p>
+    </div>
+    
     <div class="evt-shell">
       <div class="evt-vp"><div class="evt-track" id="evtTrack"></div></div>
       <div class="evt-nav">
@@ -184,8 +191,6 @@
           <li><a href="about.html"><svg class="icon"><use href="#i-arrow"/></svg>About</a></li>
           <li><a href="academics.html"><svg class="icon"><use href="#i-arrow"/></svg>Academics</a></li>
           <li><a href="admissions.html"><svg class="icon"><use href="#i-arrow"/></svg>Admissions</a></li>
-          <li><a href="campus-life.html"><svg class="icon"><use href="#i-arrow"/></svg>Campus Life</a></li>
-          <li><a href="events.html" class="active"><svg class="icon"><use href="#i-arrow"/></svg>Events</a></li>
           <li><a href="announcements.html"><svg class="icon"><use href="#i-arrow"/></svg>Announcements</a></li>
           <li><a href="contact.html"><svg class="icon"><use href="#i-arrow"/></svg>Contact</a></li>
         </ul>
@@ -255,24 +260,6 @@
   </div>
 </div>
 
-<!-- ============ APCM ASSIST CHATBOT ============ -->
-<button id="botFab" aria-label="Chat with APCM Assist">
-  <svg class="icon" style="width:26px;height:26px"><use href="#i-bot"/></svg>
-  <span class="bot-dot"></span>
-</button>
-<div id="botPanel" role="dialog" aria-label="APCM Assist chat">
-  <div class="bot-head">
-    <span class="bot-avatar"><svg class="icon" style="width:20px;height:20px"><use href="#i-bot"/></svg></span>
-    <div><b>APCM Assist</b><span>Campus helpdesk · replies instantly</span></div>
-    <button id="botClose" aria-label="Close chat"><svg class="icon" style="width:18px;height:18px"><use href="#i-x"/></svg></button>
-  </div>
-  <div class="bot-msgs" id="botMsgs"></div>
-  <div class="bot-chips" id="botChips"></div>
-  <form id="botForm">
-    <input id="botInput" type="text" placeholder="Ask about admissions, courses…" autocomplete="off" aria-label="Type your question">
-    <button type="submit" aria-label="Send"><svg class="icon" style="width:18px;height:18px"><use href="#i-send"/></svg></button>
-  </form>
-</div>
 
 <!-- ============ TOAST / LIGHTBOX ============ -->
 <div id="toast" role="status"><svg class="icon"><use href="#i-check"/></svg><span id="toastMsg"></span></div>

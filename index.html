@@ -25,7 +25,7 @@
  "slogan":"To Enlighten and Empower with Values"}
 </script>
 </head>
-<body>
+<body data-page="home">
 
 <!-- ============ SVG SPRITE ============ -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -156,7 +156,7 @@
 
   <div class="hero-banner" data-reveal="zoom">
     <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(164,22,26,.5) 0%, rgba(230,57,70,.5) 50%, rgba(29,53,87,.5) 100%);border-radius:var(--r-xl);z-index:0"></div>
-    <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/1mB3QCJpVU0?autoplay=1&mute=1&loop=1&playlist=1mB3QCJpVU0&controls=0&modestbranding=1&rel=0&fs=0" title="APCM College Campus Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;border-radius:var(--r-xl);border:0;z-index:1;width:100%;height:100%;opacity:0.9"></iframe>
+    <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/1mB3QCJpVU0?autoplay=1&mute=1&loop=1&playlist=1mB3QCJpVU0&controls=0&modestbranding=1&rel=0&fs=1" title="APCM College Campus Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;border-radius:var(--r-xl);border:0;z-index:1;width:100%;height:100%;opacity:0.9"></iframe>
     <div class="hb-shade"></div>
     <div class="h-card card-a" data-depth="1">
       <span class="hc-ic"><svg class="icon"><use href="#i-award"/></svg></span>
@@ -195,7 +195,7 @@
         <a class="btn btn-ghost" href="https://www.youtube.com/@a.p.c.mahalaxmicollegeforw2276" target="_blank" rel="noopener">Visit Our YouTube Channel <svg class="icon"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="vid" data-reveal="right" style="background:#1D3557;display:flex;align-items:center;justify-content:center;min-height:300px;border-radius:var(--r-l);overflow:hidden;position:relative">
-        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/1mB3QCJpVU0?autoplay=1&mute=1&loop=1&playlist=1mB3QCJpVU0&controls=0&modestbranding=1&rel=0&fs=0" title="APCM College Official Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border:0;width:100%;height:100%;position:absolute;inset:0"></iframe>
+        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/1mB3QCJpVU0?autoplay=1&mute=1&loop=1&playlist=1mB3QCJpVU0&controls=0&modestbranding=1&rel=0&fs=1" title="APCM College Official Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border:0;width:100%;height:100%;position:absolute;inset:0"></iframe>
       </div>
     </div>
   </div>
@@ -206,7 +206,7 @@
   <div class="container">
     <div class="video-grid">
       <div class="vid" data-reveal="left" style="background:#1D3557;display:flex;align-items:center;justify-content:center;min-height:300px;border-radius:var(--r-l);overflow:hidden;position:relative">
-        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/IaTkpP_eMjw?autoplay=1&mute=1&loop=1&playlist=IaTkpP_eMjw&controls=0&modestbranding=1&rel=0&fs=0" title="APCM College Campus Tour" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border:0;width:100%;height:100%;position:absolute;inset:0"></iframe>
+        <iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/IaTkpP_eMjw?autoplay=1&mute=1&loop=1&playlist=IaTkpP_eMjw&controls=0&modestbranding=1&rel=0&fs=1" title="APCM College Campus Tour" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border:0;width:100%;height:100%;position:absolute;inset:0"></iframe>
       </div>
       <div class="vid-copy" data-reveal="right">
         <span class="kicker">Campus Experience</span>
@@ -440,25 +440,6 @@
       <button class="btn btn-gold" type="submit" style="width:100%;justify-content:center">Submit Application <svg class="icon"><use href="#i-arrow"/></svg></button>
     </form>
   </div>
-</div>
-
-<!-- ============ APCM ASSIST CHATBOT ============ -->
-<button id="botFab" aria-label="Chat with APCM Assist">
-  <svg class="icon" style="width:26px;height:26px"><use href="#i-bot"/></svg>
-  <span class="bot-dot"></span>
-</button>
-<div id="botPanel" role="dialog" aria-label="APCM Assist chat">
-  <div class="bot-head">
-    <span class="bot-avatar"><svg class="icon" style="width:20px;height:20px"><use href="#i-bot"/></svg></span>
-    <div><b>APCM Assist</b><span>Campus helpdesk · replies instantly</span></div>
-    <button id="botClose" aria-label="Close chat"><svg class="icon" style="width:18px;height:18px"><use href="#i-x"/></svg></button>
-  </div>
-  <div class="bot-msgs" id="botMsgs"></div>
-  <div class="bot-chips" id="botChips"></div>
-  <form id="botForm">
-    <input id="botInput" type="text" placeholder="Ask about admissions, courses…" autocomplete="off" aria-label="Type your question">
-    <button type="submit" aria-label="Send"><svg class="icon" style="width:18px;height:18px"><use href="#i-send"/></svg></button>
-  </form>
 </div>
 
 <!-- ============ TOAST / LIGHTBOX ============ -->

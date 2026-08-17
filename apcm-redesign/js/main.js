@@ -195,7 +195,7 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
 })();
 
 /* ============================================================
-   4. DAY ORDER (shared with chatbot)
+   4. DAY ORDER
    ============================================================ */
 (function dayOrder() {
   const ROMAN = ["I", "II", "III", "IV", "V", "VI"];
@@ -641,114 +641,6 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
   bind("#applyForm", "Application received! Our admission cell will contact you shortly.");
   bind("#contactForm", "Message sent! Thank you for reaching out to us.");
   bind("#newsForm", "Subscribed! You'll now receive APCM updates.");
-})();
-
-/* ============================================================
-   16. APCM ASSIST — rule-based campus chatbot
-   ============================================================ */
-(function bot() {
-  const fab = $("#botFab"), panel = $("#botPanel"), msgs = $("#botMsgs"), input = $("#botInput");
-  if (!fab) return;
-  let greeted = false;
-
-  fab.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    panel.classList.toggle("on");
-    fab.classList.toggle("off");
-    if (panel.classList.contains("on") && !greeted) {
-      greeted = true;
-      setTimeout(() => {
-        say("Hello! 🙏 I'm <b>APCM Assist</b>, your campus helpdesk. Ask me about admissions, programmes, scholarships, day order, events or how to reach us — or tap a quick topic below.");
-      }, 200);
-    }
-    if (panel.classList.contains("on")) setTimeout(() => { if (input) input.focus(); }, 350);
-  });
-  
-  // Close button minimizes (only hides panel, keeps button visible for reopening)
-  $("#botClose").addEventListener("click", () => { panel.classList.remove("on"); fab.classList.remove("off"); });
-  
-  // Auto-open on page load (home page only) - with fallback triggers
-  const autoOpenBot = () => {
-    const isHomePage = !document.body.getAttribute("data-page");
-    if (!isHomePage) return;
-    
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        if (panel && fab) {
-          panel.classList.add("on");
-          fab.classList.add("off");
-          if (!greeted) {
-            greeted = true;
-            say("Hello! 🙏 I'm <b>APCM Assist</b>, your campus helpdesk. Ask me about admissions, programmes, scholarships, day order, events or how to reach us — or tap a quick topic below.");
-          }
-          if (input) setTimeout(() => input.focus(), 350);
-        }
-      }, 600);
-    });
-  };
-  
-  // Try multiple triggers to ensure auto-open works
-  document.addEventListener("DOMContentLoaded", autoOpenBot);
-  window.addEventListener("load", autoOpenBot);
-  setTimeout(autoOpenBot, 1000); // Fallback timeout
-
-  const RULES = [
-    { k:["naac","nirf","rank","grade","accredit"], a:"Great question to ask! 🏆 We're <b>reaccredited by NAAC with 'A+' Grade (CGPA 3.42/4.00)</b> and <b>ranked 88th in NIRF India Rankings 2025</b> — among the top colleges of Tamil Nadu. Also UGC-recognised under 2(f) & 12(B)." },
-    { k:["research","arf","forum","journal","publication","phd","ph.d"], a:"The <b>APCian Research Forum (ARF)</b> — one faculty representative per discipline, led by the Research Coordinator — builds research culture: funded-project proposals, publications, FDPs and M.Phil./Ph.D. programmes in Maths, Chemistry, Commerce, Tamil & English. See the Research section on this page! 🔬" },
-    { k:["library","book","opac"], a:"Our <b>Central Library</b> plus department libraries offer volumes, journals, e-resources and digital access. There's a dedicated Library page under Student Support in the menu 📚" },
-    { k:["club","cell","nss","yrc","sport","kabbadi","kabaddi","ncc"], a:"Campus life is buzzing: <b>NSS, YRC, RRC</b>, fine-arts & literary clubs, quiz & eco clubs, plus Cells for counselling, anti-ragging, grievance and placement. <b>Sports</b> covers athletics, kabaddi, kho-kho and yoga 🏃‍♀️" },
-    { k:["pudhumai","puthumai","scholarship","fees","fee","stipend","concession","mahalaxmi"], a:"Money should never stop your studies 💛 Support includes: <b>Puthumai Penn Thittam (₹1,000/month)</b> for govt-school students, <b>Mahalaxmiammal Memorial Scholarship</b> from our management, Post-Matric (BC/MBC/DNC) and SC/ST scholarships, plus <b>First-Graduate fee concessions</b>. Tap <b>Apply Now</b> or call 0461-2345655." },
-    { k:["admission","apply","join","seat","enrol","application"], a:"Admissions for <b>2026–27</b> are merit-based — no entrance exam for most programmes. Steps: 1️⃣ Enquire/apply online, 2️⃣ upload documents, 3️⃣ merit list, 4️⃣ counselling, 5️⃣ enrol. Tap the gold <b>Apply Now</b> button (top-right) to start your application — it takes 2 minutes!" },
-    { k:["day order","dayorder","order"], a:()=>`According to the current academic cycle, today is <b>${window.__dayOrderText}</b>. The six-day cycle runs Monday to Saturday; Sundays are holidays.` },
-    { k:["course","programme","program","department","bsc","b.sc","bcom","b.com","bca","msc","m.sc","ma ","b.a","ba ","subjects"], a:"We have <b>9 departments</b>: Tamil, English, History, Mathematics, Physics, Chemistry, Zoology, Computer Science (B.Sc/BCA/M.Sc) and Commerce (B.Com/M.Com). PG + M.Phil./Ph.D. research programmes too. Not sure which fits you? Try the <b>Programme Finder</b> tool on this page — it's quite smart! ✨" },
-    { k:["event","carnival","fest","seminar","workshop","sports day"], a:"Upcoming: <b>APCian CARNIVAL 2K26</b> (07 Aug) — inter-school extravaganza; <b>Green Chemistry National Seminar</b> (22 Aug); Vaanavil Literary Fest (04 Sep); AI & Data Bootcamp (12 Sep); Sports Day (10 Oct). Full details are in the Events section above! " },
-    { k:["time","timing","hours","open","when"], a:"The college office works <b>Monday–Saturday, 9:30 AM – 4:30 PM</b>. Classes follow the six day-order cycle with Sundays off." },
-    { k:["address","location","where","map","reach","bus"], a:"We're at <b>Ettayapuram Road, Thoothukudi – 628 002</b>, easy to reach by town buses on the Ettayapuram route. Tap 'Open in Google Maps' in the Contact section for directions 📍" },
-    { k:["contact","phone","mail","email","office","call"], a:"Reach us at <b>0461-2345655</b> or <b>principal@apcmcollege.ac.in</b>. The office replies within two working days. You can also use the contact form on this page." },
-    { k:["result","exam","revaluation","arrear"], a:"University results are published by M.S. University on their portal. Revaluation/arrear applications go through the college exam cell — check the Announcements section for the current window 📄" },
-    { k:["principal","founder","management","secretary","president"], a:"Our leadership: Founder <b>Kulapathi Sri A.P.C. Veerabahu</b>, President <b>Thiru A.P.C.V. Chockalingam</b>, Secretary <b>Tmt. C. Subbulakshmi</b> and Principal <b>Dr. K. Palani</b>. Scroll to the Leadership section to meet them!" },
-    { k:["hostel","stay","accommodation"], a:"For hostel and college-bus transport details, please contact the office at 0461-2345655 — they'll give you current availability and fees." },
-    { k:["placement","job","career"], a:"The <b>Career Guidance & Placement Cell</b> runs soft-skills training, campus drives with regional employers, and competitive-exam coaching (TNPSC/TRB/NET). CS and Commerce students also get industry certifications!" },
-    { k:["brochure","prospectus","download","pdf"], a:"You can download the <b>official Prospectus</b> (aided & self-financed programmes, eligibility, fee structure) from the Admissions section above — the gold brochure bar. Online application processing fee is just <b>₹150 for all courses</b> 📄" },
-    { k:["video","youtube","tour"], a:"Watch our official campus film under <b>Discover APCM</b>, and the Student Support Services film in the Student Support section. Even more on our YouTube channel — link in the footer 🎬" },
-    { k:["naan mudhalvan","naan","mudhalvan","academy"], a:"The <b>Career Guidance Cell</b>, APCM Academy and Tamil Nadu's <b>Naan Mudhalvan</b> initiative run free skill & competitive-exam training for our students. Details are on the official site's Career pages!" },
-    { k:["thank","thanks"], a:"You're most welcome! 💛 Always happy to help a future APCian. Anything else?" },
-    { k:["hello","hi","hey"], a:"Hello! 🙏 How can I help you today — admissions, programmes, scholarships, events?" },
-  ];
-
-  const CHIPS = ["Admissions", "Programmes", "Scholarships", "Day order", "Events", "Contact"];
-  $("#botChips").innerHTML = CHIPS.map(c => `<button type="button">${c}</button>`).join("");
-  $$("#botChips button").forEach(b => b.addEventListener("click", () => ask(b.textContent)));
-
-  function bubble(html, me) {
-    const d = document.createElement("div");
-    d.className = "b-msg" + (me ? " me" : "");
-    d.innerHTML = html;
-    msgs.appendChild(d);
-    msgs.scrollTop = msgs.scrollHeight;
-  }
-  function say(html) {
-    const t = document.createElement("div");
-    t.className = "b-msg typing";
-    t.innerHTML = "<i></i><i></i><i></i>";
-    msgs.appendChild(t); msgs.scrollTop = msgs.scrollHeight;
-    setTimeout(() => { t.classList.remove("typing"); t.innerHTML = html; msgs.scrollTop = msgs.scrollHeight; }, 550 + Math.random() * 450);
-  }
-  function ask(text) {
-    bubble(text, true);
-    const low = " " + text.toLowerCase() + " ";
-    const rule = RULES.find(r => r.k.some(k => low.includes(k)));
-    if (rule) say(typeof rule.a === "function" ? rule.a() : rule.a);
-    else say("I can help with <b>admissions, programmes, scholarships, day order, events, results, contact</b> and more. Try one of the quick topics, or call the office at <b>0461-2345655</b> for anything specific! 🙂");
-  }
-  $("#botForm").addEventListener("submit", e => {
-    e.preventDefault();
-    const v = input.value.trim();
-    if (!v) return;
-    input.value = "";
-    ask(v);
-  });
 })();
 
 /* ============================================================
