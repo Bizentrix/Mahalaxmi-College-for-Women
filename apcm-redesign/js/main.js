@@ -664,21 +664,30 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
   // Close button minimizes (only hides panel, keeps button visible for reopening)
   $("#botClose").addEventListener("click", () => { panel.classList.remove("on"); fab.classList.remove("off"); });
   
-  // Auto-open chat on page load (home page only)
-  window.addEventListener("load", () => {
+  // Auto-open on page load (home page only) - with fallback triggers
+  const autoOpenBot = () => {
     const isHomePage = !document.body.getAttribute("data-page");
-    if (!isHomePage) return; // Only auto-open on home page
+    if (!isHomePage) return;
     
-    setTimeout(() => {
-      panel.classList.add("on");
-      fab.classList.add("off");
-      if (!greeted) {
-        greeted = true;
-        say("Hello! 🙏 I'm <b>APCM Assist</b>, your campus helpdesk. Ask me about admissions, programmes, scholarships, day order, events or how to reach us — or tap a quick topic below.");
-      }
-      setTimeout(() => input.focus(), 350);
-    }, 500);
-  });
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        if (panel && fab) {
+          panel.classList.add("on");
+          fab.classList.add("off");
+          if (!greeted) {
+            greeted = true;
+            say("Hello! 🙏 I'm <b>APCM Assist</b>, your campus helpdesk. Ask me about admissions, programmes, scholarships, day order, events or how to reach us — or tap a quick topic below.");
+          }
+          if (input) setTimeout(() => input.focus(), 350);
+        }
+      }, 600);
+    });
+  };
+  
+  // Try multiple triggers to ensure auto-open works
+  document.addEventListener("DOMContentLoaded", autoOpenBot);
+  window.addEventListener("load", autoOpenBot);
+  setTimeout(autoOpenBot, 1000); // Fallback timeout
 
   const RULES = [
     { k:["naac","nirf","rank","grade","accredit"], a:"Great question to ask! 🏆 We're <b>reaccredited by NAAC with 'A+' Grade (CGPA 3.42/4.00)</b> and <b>ranked 88th in NIRF India Rankings 2025</b> — among the top colleges of Tamil Nadu. Also UGC-recognised under 2(f) & 12(B)." },
