@@ -651,14 +651,18 @@ const icon = (id, cls = "icon") => `<svg class="${cls}" aria-hidden="true"><use 
   if (!fab) return;
   let greeted = false;
 
-  fab.addEventListener("click", () => {
+  fab.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     panel.classList.toggle("on");
     fab.classList.toggle("off");
     if (panel.classList.contains("on") && !greeted) {
       greeted = true;
-      say("Hello! 🙏 I'm <b>APCM Assist</b>, your campus helpdesk. Ask me about admissions, programmes, scholarships, day order, events or how to reach us — or tap a quick topic below.");
+      setTimeout(() => {
+        say("Hello! 🙏 I'm <b>APCM Assist</b>, your campus helpdesk. Ask me about admissions, programmes, scholarships, day order, events or how to reach us — or tap a quick topic below.");
+      }, 200);
     }
-    if (panel.classList.contains("on")) setTimeout(() => input.focus(), 350);
+    if (panel.classList.contains("on")) setTimeout(() => { if (input) input.focus(); }, 350);
   });
   
   // Close button minimizes (only hides panel, keeps button visible for reopening)
